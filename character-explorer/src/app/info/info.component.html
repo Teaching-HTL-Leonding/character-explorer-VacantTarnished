@@ -1,7 +1,6 @@
 <div>
-  <div *ngFor="let profile of profiles">
-    <div>
-      <label>Profile: {{profile.cute_name}}</label>
-    </div>
-  </div>
+  <select [(ngModel)]="selectedProfile">
+    <option *ngFor="let profile of profiles" [value]="profile.profile_id">{{profile.cute_name}}</option>
+  </select>
+  <p>{{selectedProfile}}</p>
 </div>

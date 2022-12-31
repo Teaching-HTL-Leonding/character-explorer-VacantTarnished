@@ -13,6 +13,7 @@ export class InfoComponent implements OnInit {
 
   uuid: string = "";
   profiles: SkyblockProfile[] = [];
+  selectedProfile: string = "";
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -20,6 +21,7 @@ export class InfoComponent implements OnInit {
       this.hypixelService.getSkyblockData(this.uuid).subscribe(data => {
         if (data.success) {
           this.profiles = data.profiles;
+          this.selectedProfile = this.profiles[0].profile_id;
         } else {
           console.log("Error getting data from Hypixel API");
         }
