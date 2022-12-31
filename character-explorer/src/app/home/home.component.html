@@ -1,0 +1,7 @@
+<div>
+  <label>
+    Username: <input [(ngModel)]="username" required type="text" minlength="3" maxlength="16">
+  </label>
+  <button (click)="onSearchButton()">Search</button>
+  <p *ngIf="!validUsername" style="color: red">User with that name could not be found!</p>
+</div>
