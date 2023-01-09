@@ -10,6 +10,25 @@ interface SkyblockDataResponse {
 export interface SkyblockProfile {
   profile_id: string;
   cute_name: string;
+  members: SkyblockProfileMembers;
+}
+
+export interface SkyblockProfileMembers {
+  [key: string]: SkyblockProfileMember;
+}
+
+export interface SkyblockProfileMember {
+  pets: SkyblockPet[];
+}
+
+export interface SkyblockPet {
+  type: string;
+  exp: number;
+  active: boolean;
+  tier: string;
+  heldItem: string;
+  candyUsed: number;
+  skin: string;
 }
 
 @Injectable({
@@ -22,7 +41,7 @@ export class HypixelService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSkyblockData(uuid: string): Observable<SkyblockDataResponse> {
+  getSkyblockProfiles(uuid: string): Observable<SkyblockDataResponse> {
     return this.httpClient.get<SkyblockDataResponse>(`${this.baseHypixelUrl}${this.profileRoute}?uuid=${uuid}`);
   }
 }
